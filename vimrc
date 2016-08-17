@@ -25,13 +25,13 @@ Plugin 'ervandew/supertab'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'vim-scripts/DidYouMean'
 
-Plugin 'klen/python-mode'
+"Plugin 'klen/python-mode'
 " Override go-to.definition key shortcut to Ctrl-]
-let g:pymode_rope_goto_definition_bind = "<C-]>"
+"let g:pymode_rope_goto_definition_bind = "<C-]>"
 " Override run current python file key shortcut to Ctrl-Shift-e
-let g:pymode_run_bind = "<C-S-e>"
+"let g:pymode_run_bind = "<C-S-e>"
 " Override view python doc key shortcut to Ctrl-Shift-d
-let g:pymode_doc_bind = "<C-S-d>"
+"let g:pymode_doc_bind = "<C-S-d>"
 
 Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
@@ -44,11 +44,51 @@ set background=dark
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 
-Plugin 'erekwyatt/vim-fswitch'
+"Plugin 'derekwyatt/vim-fswitch'
+"Plugin 'vim-scripts/indexer.tar.gz'
+"Plugin 'vim-scripts/vimprj'
+" Library for Vimprj and indexer.tar.gz
+"Plugin 'vim-scripts/DfrankUtil'
+"Plugin 'easymotion/vim-easymotion'
 
+Plugin 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+"let g:syntastic_cpp_compiler = 'clang++'
+"let g:syntastic_cpp_compiler_options = '-std=c++11'
 
-"All of your Plugins must be added before the following line
+Plugin 'Rip-Rip/clang_complete'
+let g:clang_use_library = 1
+let g:clang_library_path = '/home/chenyun/opt/llvm/lib/libclang.so'
+
+Plugin 'vim-scripts/DoxygenToolkit.vim'
+let g:DoxygenToolkit_briefTag_pre= "@brief   "
+let g:DoxygenToolkit_briefTag_funcName="yes"
+let g:DoxygenToolkit_briefTag_className="yes"
+let g:DoxygenToolkit_briefTag_structName="yes"
+let g:DoxygenToolkit_briefTag_enumName="yes"
+let g:DoxygenToolkit_briefTag_namespaceName="yes"
+let g:DoxygenToolkit_briefTag_post="- "
+let g:DoxygenToolkit_paramTag_pre= "@param   "
+let g:DoxygenToolkit_paramTag_post=": "
+let g:DoxygenToolkit_returnTag=    "@returns "
+let g:DoxygenToolkit_fileTag=      "@file    "
+let g:DoxygenToolkit_versionTag=   "@version "
+let g:DoxygenToolkit_authorTag=    "@author  "
+let g:DoxygenToolkit_authorName="Chen Yun, chenyun@lanshifund.com"
+let g:DoxygenToolkit_dateTag=      "@date    "
+let g:DoxygenToolkit_blockTag=     "@name    "
+let g:DoxygenToolkit_classTag=     "@class   "
+let g:DoxygenToolkit_throwTag_pre= "@throw   "
+let g:DoxygenToolkit_templateParamTag_pre="@tparam  "
+let g:doxygen_enhanced_color=1
+" All of your Plugins must be added before the following line
 call vundle#end()            " required
 " To ignore plugin indent changes, instead use:
 " filetype plugin on
@@ -113,13 +153,11 @@ set wildmenu
 set laststatus=2 " Always display the statusline in all windows
 set showtabline=2 " Always display the tabline, even if there is only one tab
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+set colorcolumn=81
 
 " 配色
 hi Comment ctermfg = blue
 hi Normal ctermfg=grey ctermbg=black
-
-hi CursorLine   cterm=NONE ctermbg=black guibg=black
-nnoremap ct :set cursorline!<Enter>
 
 map <C-N> <Esc>:tabnew<Enter>
 nnoremap nt :NERDTreeTabsToggle<Enter>
@@ -142,3 +180,5 @@ nnoremap <A-Up> <C-W>+
 nnoremap <A-Down> <C-W>-
 nnoremap <A-Left> <C-W><
 nnoremap <A-Right> <C-W>>
+
+nnoremap <S-D> <Esc>:Dox<Enter>

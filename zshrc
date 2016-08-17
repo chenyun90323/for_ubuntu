@@ -53,9 +53,11 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin"
-export PATH=$PATH:"$HOME/bin:$HOME/.local/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH=/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+export MANPATH=/usr/local/man:$MANPATH
+export MANPATH=$HOME/man:$MANPATH
+#export LD_LIBRARY_PATH=$HOME/libs:$LD_LIBRARY_PATH
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,4 +90,6 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ll="ls -Allh"
-export DISPLAY=192.168.1.100:0.0
+# export DISPLAY=192.168.1.11:0.0
+export TMPDIR=~/.tmp
+export TEMP=~/.tmp
