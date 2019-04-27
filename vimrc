@@ -1,16 +1,16 @@
-set nocompatible              " be iMproved, required
-filetype on                   " required
-set t_Co=256
+set nocompatible " be improved, required
+filetype off " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
-
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-let g:vundle_default_git_proto='git'
+Plugin 'VundleVim/Vundle.vim'
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
 
 " For nerdtree-git
 Plugin 'scrooloose/nerdtree'
@@ -23,87 +23,23 @@ let Tlist_Use_Right_Window = 1
 
 Plugin 'ervandew/supertab'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'vim-scripts/DidYouMean'
-
-"Plugin 'klen/python-mode'
-" Override go-to.definition key shortcut to Ctrl-]
-"let g:pymode_rope_goto_definition_bind = "<C-]>"
-" Override run current python file key shortcut to Ctrl-Shift-e
-"let g:pymode_run_bind = "<C-S-e>"
-" Override view python doc key shortcut to Ctrl-Shift-d
-"let g:pymode_doc_bind = "<C-S-d>"
 
 Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
-Plugin 'octol/vim-cpp-enhanced-highlight'
-let g:cpp_class_scope_highlight = 1
-
-Plugin 'nathanaelkane/vim-indent-guides'
-set ts=4 sw=4 et
-set background=dark
-let g:indent_guides_guide_size = 1
-let g:indent_guides_start_level = 2
-
-"Plugin 'derekwyatt/vim-fswitch'
-"Plugin 'vim-scripts/indexer.tar.gz'
-"Plugin 'vim-scripts/vimprj'
-" Library for Vimprj and indexer.tar.gz
-"Plugin 'vim-scripts/DfrankUtil'
-"Plugin 'easymotion/vim-easymotion'
-
-Plugin 'scrooloose/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-"let g:syntastic_cpp_compiler = 'clang++'
-"let g:syntastic_cpp_compiler_options = '-std=c++11'
-
-Plugin 'Rip-Rip/clang_complete'
-let g:clang_use_library = 1
-let g:clang_library_path = '/home/chenyun/opt/llvm/lib/libclang.so'
-
-Plugin 'vim-scripts/DoxygenToolkit.vim'
-let g:DoxygenToolkit_briefTag_pre= "@brief   "
-let g:DoxygenToolkit_briefTag_funcName="yes"
-let g:DoxygenToolkit_briefTag_className="yes"
-let g:DoxygenToolkit_briefTag_structName="yes"
-let g:DoxygenToolkit_briefTag_enumName="yes"
-let g:DoxygenToolkit_briefTag_namespaceName="yes"
-let g:DoxygenToolkit_briefTag_post="- "
-let g:DoxygenToolkit_paramTag_pre= "@param   "
-let g:DoxygenToolkit_paramTag_post=": "
-let g:DoxygenToolkit_returnTag=    "@returns "
-let g:DoxygenToolkit_fileTag=      "@file    "
-let g:DoxygenToolkit_versionTag=   "@version "
-let g:DoxygenToolkit_authorTag=    "@author  "
-let g:DoxygenToolkit_authorName="Chen Yun, chenyun@lanshifund.com"
-let g:DoxygenToolkit_dateTag=      "@date    "
-let g:DoxygenToolkit_blockTag=     "@name    "
-let g:DoxygenToolkit_classTag=     "@class   "
-let g:DoxygenToolkit_throwTag_pre= "@throw   "
-let g:DoxygenToolkit_templateParamTag_pre="@tparam  "
-let g:doxygen_enhanced_color=1
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call vundle#end() " required
+filetype plugin indent on " required
 " To ignore plugin indent changes, instead use:
-" filetype plugin on
-filetype plugin indent on    " required
-
+"filetype plugin on
 "
 " Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginList - lists configured plugins
+" :PluginInstall - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" :PluginClean - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
+" Put your non-Plugin stuff after this line"
 
 " set ruler
 " set rulerformat=%55(%{strftime('%A\ %F\ %H:%M:%S')}\ %5l,%-6(%c%V%)\ %P%)
@@ -180,5 +116,3 @@ nnoremap <A-Up> <C-W>+
 nnoremap <A-Down> <C-W>-
 nnoremap <A-Left> <C-W><
 nnoremap <A-Right> <C-W>>
-
-nnoremap <S-D> <Esc>:Dox<Enter>
