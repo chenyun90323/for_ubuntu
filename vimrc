@@ -24,8 +24,6 @@ let Tlist_Use_Right_Window = 1
 Plugin 'ervandew/supertab'
 Plugin 'jistr/vim-nerdtree-tabs'
 
-Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-
 " All of your Plugins must be added before the following line
 call vundle#end() " required
 filetype plugin indent on " required
