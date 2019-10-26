@@ -14,7 +14,35 @@ Plugin 'VundleVim/Vundle.vim'
 
 " For nerdtree-git
 Plugin 'scrooloose/nerdtree'
+" ?: toggle help:
+"当NERDTree为剩下的唯一窗口时自动关闭
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"修改树的显示图标
+let g:NERDTreeDirArrowExpandable = '?'
+let g:NERDTreeDirArrowCollapsible = '▼'
+let NERDTreeAutoCenter=1
+" 显示行号
+let NERDTreeShowLineNumbers=1
+" 是否显示隐藏文件
 let NERDTreeShowHidden=1
+" 设置宽度
+let NERDTreeWinSize=34
+" 在终端启动vim时，共享NERDTree
+let g:nerdtree_tabs_open_on_console_startup=1
+" 忽略一下文件的显示
+let NERDTreeIgnore=['\.pyc','\.swp']
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "?",
+    \ "Staged"    : "?",
+    \ "Untracked" : "?",
+    \ "Renamed"   : "?",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "?",
+    \ "Dirty"     : "?",
+    \ "Clean"     : "??",
+    \ 'Ignored'   : '?',
+    \ "Unknown"   : "?"
+    \ }
 
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
@@ -22,7 +50,6 @@ Plugin 'taglist-plus'
 let Tlist_Use_Right_Window = 1
 
 Plugin 'ervandew/supertab'
-Plugin 'jistr/vim-nerdtree-tabs'
 
 " All of your Plugins must be added before the following line
 call vundle#end() " required
@@ -69,32 +96,32 @@ vnoremap <S-F12>   :TrimSpaces<CR>
 " differently from regular Vi. They are highly recommended though.
 set showcmd     " Show (partial) command in status line.
 set showmatch   " Show matching brackets.
-"set ignorecase " Do case insensitive matching
+set ignorecase " Do case insensitive matching
 set smartcase   " Do smart case matching
 set incsearch   " Incremental search
-"set autowrite  " Automatically save before commands like :next and :make
+set autowrite  " Automatically save before commands like :next and :make
 "set hidden     " Hide buffers when they are abandoned
 set mouse=a     " Enable mouse usage (all modes)
 set nu          " Show line number
 set autoindent  " Do auto indent
 "set cindent    " Use indent for C
-"set ts=4        " 4 space in 1 Tab
+set ts=4        " 4 space in 1 Tab
 set expandtab   " Use blankspace for Tab
 set hlsearch    " High light for search
 set shiftwidth=4    " Set shift width to 4
-set textwidth=80    " Add /n at 80
-set wildmenu
-set laststatus=2 " Always display the statusline in all windows
-set showtabline=2 " Always display the tabline, even if there is only one tab
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-set colorcolumn=81
+"set textwidth=80    " Add /n at 80
+"set wildmenu
+"set laststatus=2 " Always display the statusline in all windows
+"set showtabline=2 " Always display the tabline, even if there is only one tab
+"set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+"set colorcolumn=81
 
 " 配色
 hi Comment ctermfg = blue
 hi Normal ctermfg=grey ctermbg=black
 
 map <C-N> <Esc>:tabnew<Enter>
-nnoremap nt :NERDTreeTabsToggle<Enter>
+nnoremap nt :NERDTreeToggle<Enter>
 nnoremap tt :TlistToggle<Enter>
 map <C-F5> <Esc>:!ctags --erlang-kinds=+dfmr -R --exclude=sql --exclude=doc --exclude=logs --exclude=ebin -f tags<Enter>
 "--exclude=*eunit*
