@@ -145,3 +145,10 @@ nnoremap <A-Up> <C-W>+
 nnoremap <A-Down> <C-W>-
 nnoremap <A-Left> <C-W><
 nnoremap <A-Right> <C-W>>
+
+inoremap ( ()<ESC>i
+inoremap [ []<ESC>i
+inoremap { {}<ESC>i
+inoremap < <><ESC>i
+inoremap ' ''<ESC>i
+inoremap " ""<ESC>i
