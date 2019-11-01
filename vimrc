@@ -1,6 +1,9 @@
 set nocompatible " be improved, required
 filetype off " required
 
+set rtp+=~/.local/lib/python3.6/site-packages/powerline/bindings/vim
+set laststatus=2
+set t_Co=256
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -14,11 +17,10 @@ Plugin 'VundleVim/Vundle.vim'
 
 " For nerdtree-git
 Plugin 'scrooloose/nerdtree'
-" ?: toggle help:
 "当NERDTree为剩下的唯一窗口时自动关闭
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 "修改树的显示图标
-let g:NERDTreeDirArrowExpandable = '?'
+let g:NERDTreeDirArrowExpandable = '►'
 let g:NERDTreeDirArrowCollapsible = '▼'
 let NERDTreeAutoCenter=1
 " 显示行号
@@ -32,15 +34,15 @@ let g:nerdtree_tabs_open_on_console_startup=1
 " 忽略一下文件的显示
 let NERDTreeIgnore=['\.pyc','\.swp']
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "?",
-    \ "Staged"    : "?",
-    \ "Untracked" : "?",
-    \ "Renamed"   : "?",
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
     \ "Unmerged"  : "═",
-    \ "Deleted"   : "?",
-    \ "Dirty"     : "?",
-    \ "Clean"     : "??",
-    \ 'Ignored'   : '?',
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
 
@@ -52,8 +54,41 @@ let Tlist_Show_One_File=1     "不同时显示多个文件的tag，只显示当�
 let Tlist_Exit_OnlyWindow=1   "如果taglist窗口是最后一个窗口，则退出vim
 let Tlist_Ctags_Cmd="/usr/bin/ctags" "将taglist与ctags关联
 
-
 Plugin 'ervandew/supertab'
+
+Plugin 'Valloric/YouCompleteMe'
+"是否开启语义补全"
+let g:ycm_seed_identifiers_with_syntax=1
+"是否在注释中也开启补全"
+let g:ycm_complete_in_comments=1
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+"开始补全的字符数"
+let g:ycm_min_num_of_chars_for_completion=2
+"补全后自动关机预览窗口"
+let g:ycm_autoclose_preview_window_after_completion=1
+" 禁止缓存匹配项,每次都重新生成匹配项"
+let g:ycm_cache_omnifunc=0
+"字符串中也开启补全"
+let g:ycm_complete_in_strings = 1
+"离开插入模式后自动关闭预览窗口"
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"回车即选中当前项"
+inoremap <expr> <CR>       pumvisible() ? '<C-y>' : '\<CR>'
+"上下左右键行为"
+inoremap <expr> <Down>     pumvisible() ? '\<C-n>' : '\<Down>'
+inoremap <expr> <Up>       pumvisible() ? '\<C-p>' : '\<Up>'
+inoremap <expr> <PageDown> pumvisible() ? '\<PageDown>\<C-p>\<C-n>' : '\<PageDown>'
+inoremap <expr> <PageUp>   pumvisible() ? '\<PageUp>\<C-p>\<C-n>' : '\<PageUp>'
+
+Plugin 'vim-syntastic/syntastic'
+
+Plugin 'Yggdroot/indentLine'
+let g:indentLine_color_term = 150
+let g:indentLine_bgcolor_term = 100
+
+Plugin 'tell-k/vim-autopep8'
+
+Plugin 'jiangmiao/auto-pairs'
 
 " All of your Plugins must be added before the following line
 call vundle#end() " required
@@ -119,15 +154,14 @@ set shiftwidth=4    " Set shift width to 4
 "set showtabline=2 " Always display the tabline, even if there is only one tab
 "set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 "set colorcolumn=81
-
-" 配色
-hi Comment ctermfg = blue
-hi Normal ctermfg=grey ctermbg=black
+set scrolloff=3     "距离顶部和底部3行"
+set encoding=utf-8  "编码
+set fenc=utf-8      "编码
 
 map <C-N> <Esc>:tabnew<Enter>
 nnoremap nt :NERDTreeToggle<Enter>
 nnoremap tt :TlistToggle<Enter>
-map <C-F5> <Esc>:!ctags --erlang-kinds=+dfmr -R --exclude=sql --exclude=doc --exclude=logs --exclude=ebin -f tags<Enter>
+map <C-F5> <Esc>:!ctags -R --exclude=logs -f tags<Enter>
 "--exclude=*eunit*
 nnoremap <Tab> <Esc>:tabn<Enter>
 nnoremap <S-Tab> <Esc>:tabp<Enter>
@@ -145,10 +179,3 @@ nnoremap <A-Up> <C-W>+
 nnoremap <A-Down> <C-W>-
 nnoremap <A-Left> <C-W><
 nnoremap <A-Right> <C-W>>
-
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap { {}<ESC>i
-inoremap < <><ESC>i
-inoremap ' ''<ESC>i
-inoremap " ""<ESC>i
