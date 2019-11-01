@@ -1,6 +1,8 @@
 set nocompatible " be improved, required
 filetype off " required
 
+color elflord
+
 set rtp+=~/.local/lib/python3.6/site-packages/powerline/bindings/vim
 set laststatus=2
 set t_Co=256
@@ -72,19 +74,12 @@ let g:ycm_cache_omnifunc=0
 let g:ycm_complete_in_strings = 1
 "离开插入模式后自动关闭预览窗口"
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-"回车即选中当前项"
-inoremap <expr> <CR>       pumvisible() ? '<C-y>' : '\<CR>'
-"上下左右键行为"
-inoremap <expr> <Down>     pumvisible() ? '\<C-n>' : '\<Down>'
-inoremap <expr> <Up>       pumvisible() ? '\<C-p>' : '\<Up>'
-inoremap <expr> <PageDown> pumvisible() ? '\<PageDown>\<C-p>\<C-n>' : '\<PageDown>'
-inoremap <expr> <PageUp>   pumvisible() ? '\<PageUp>\<C-p>\<C-n>' : '\<PageUp>'
 
 Plugin 'vim-syntastic/syntastic'
 
 Plugin 'Yggdroot/indentLine'
-let g:indentLine_color_term = 150
-let g:indentLine_bgcolor_term = 100
+let g:indentLine_color_term = 239
+let g:indentLine_bgcolor_term = 202
 
 Plugin 'tell-k/vim-autopep8'
 
