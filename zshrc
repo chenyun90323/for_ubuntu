@@ -101,5 +101,5 @@ export PATH="/home/ubuntu/.local/bin/:$PATH"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ll="ls -Alh --col"
+alias ll="ls -alh --col"
 alias ls="ls -lh --col"
